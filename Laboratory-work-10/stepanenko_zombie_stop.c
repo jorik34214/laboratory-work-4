@@ -12,7 +12,7 @@ int main() {
         perror("Помилка створення процесу");
         return 1;
     } else if (pid == 0) {
-        printf("Child of Karaulnyi is finished (PID: %d)\n", getpid());
+        printf("Child of Stepanenko is finished (PID: %d)\n", getpid());
         exit(0);
     } else {
         sleep(3 * n);
