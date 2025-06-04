@@ -1,0 +1,14 @@
+SELECT * FROM programlang WHERE pl_id = 1 FOR UPDATE;
+UPDATE programlang
+SET name = 'Stepanenko', year = 2025
+WHERE pl_id = 1;
+SELECT * FROM programlang WHERE pl_id = 1;
+ROLLBACK;
+
+BEGIN;
+SELECT * FROM programlang WHERE pl_id = 1 FOR UPDATE;
+UPDATE programlang
+SET name = 'C', year = 1969
+WHERE pl_id = 1;
+SELECT * FROM programlang WHERE pl_id = 1;
+COMMIT;
