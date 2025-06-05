@@ -3,22 +3,36 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <signal.h>
 
-int main() {
-    pid_t pid = fork();
+void sig_handler(int sig) {
+    printf("Signal handler for signal = %d\n", sig);
+    wait(0);
+}
+
+int main(void) {
     int n = 19;
+    pid_t pid;
 
-    if (pid == -1) {
+    signal(SIGCHLD, &sig_handler);
+
+    pid = fork();
+
+    if (pid < 0) {
         perror("Помилка створення процесу");
         return 1;
-    } else if (pid == 0) {
+    }
+    else if (pid == 0) {
+
         printf("Child of Stepanenko is finished (PID: %d)\n", getpid());
-        exit(0);
-    } else {
+        _exit(0);
+    }
+    else {
+
+        printf("Parent process started...\n");
         sleep(3 * n);
-        waitpid(pid, NULL, 0);
         printf("Parent process finished\n");
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
