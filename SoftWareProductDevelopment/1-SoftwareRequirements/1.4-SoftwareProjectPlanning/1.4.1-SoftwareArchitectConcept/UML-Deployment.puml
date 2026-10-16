@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+skinparam nodeStyle rectangle
+
+node "Клієнтський пристрій (ПК / Смартфон)" as ClientNode {
+    component "Веб-браузер / Кліентський додаток\n(PL: HTML/JS/Flutter)" as UIComponent
+    artifact "Веб-камера (Camera API)" as WebCam
+}
+
+node "Хмарний сервер / Сервер реабілітації" as ServerNode {
+    component "REST API Сервер\n(BL: Java Spring Boot)" as SpringApp
+    component "Модуль комп'ютерного зору\n(Python / MediaPipe)" as VisionModule
+    database "СКБД PostgreSQL\n(AL: Реляційні дані та JSON)" as Database
+}
+
+WebCam --> UIComponent : Відеопотік
+UIComponent --> SpringApp : HTTPS / JSON / WSS
+SpringApp --> VisionModule : Передача кадрів для аналізу
+SpringApp --> Database : SQL DML / JPA
+@enduml
