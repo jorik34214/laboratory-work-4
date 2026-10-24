@@ -1,0 +1,43 @@
+@startuml
+skinparam linetype ortho
+
+entity "PhysicalTherapist" as pt {
+  * прізвище : VARCHAR
+  --
+  категорія : VARCHAR
+}
+
+entity "Patient" as p {
+  * прізвище : VARCHAR
+  --
+  посада : VARCHAR
+  терапевт_прізвище : VARCHAR
+}
+
+entity "Exercise" as e {
+  * назва : VARCHAR
+  --
+  опис : VARCHAR
+}
+
+entity "Session" as s {
+  * дата : VARCHAR
+  --
+  тривалість : INTEGER
+  пацієнт_прізвище : VARCHAR
+  вправа_назва : VARCHAR
+}
+
+entity "JointMeasurement" as jm {
+  * кут_вигину : REAL
+  --
+  асиметрія_ходи : REAL
+  сеанс_дата : VARCHAR
+}
+
+pt ||--o{ p : "призначає"
+p ||--o{ s : "виконує"
+e ||--o{ s : "містить"
+s ||--|{ jm : "реєструє"
+
+@enduml

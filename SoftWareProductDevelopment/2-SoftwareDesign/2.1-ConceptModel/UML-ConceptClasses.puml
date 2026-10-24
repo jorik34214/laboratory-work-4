@@ -1,0 +1,34 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Patient {
+  прізвище
+  посада
+}
+
+class Exercise {
+  назва
+  опис
+}
+
+class Session {
+  дата
+  тривалість
+}
+
+class JointMeasurement {
+  кут вигину
+  асиметрія ходи
+}
+
+class PhysicalTherapist {
+  прізвище
+  категорія
+}
+
+Patient "1" -- "0..*" Session : виконує >
+Session "1" -- "1" Exercise : містить >
+Session "1" -- "1..*" JointMeasurement : реєструє >
+PhysicalTherapist "1" -- "0..*" Patient : призначає план >
+
+@enduml
