@@ -1,0 +1,21 @@
+name: Data Schema Code Convention
+
+on: [push]
+
+jobs:
+  lint-sql:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install sqlfluff
+        run: pip install sqlfluff
+
+      - name: Run SQLFluff linter on DataSchema
+        run: sqlfluff lint SoftWareProductDevelopment/3-SoftwareConstruction/3.1-GitHubActions/DataSchema.sql --dialect sqlite || true

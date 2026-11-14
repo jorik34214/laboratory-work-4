@@ -1,0 +1,29 @@
+name: Print Software Versions
+
+on: [push]
+
+jobs:
+  print-dotnet-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Print .NET Runtime and SDK version
+        run: |
+          echo "=== Data Processing Layer / Runtime Version ==="
+          dotnet --version
+          dotnet --info
+
+  print-db-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check SQLite version
+        run: |
+          echo "=== Data Access Layer / DBMS Version (SQLite) ==="
+          sqlite3 --version
