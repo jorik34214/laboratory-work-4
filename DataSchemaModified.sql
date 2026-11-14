@@ -1,0 +1,1 @@
+CREATE TABLE bikes(id INT PRIMARY KEY,model TEXT);

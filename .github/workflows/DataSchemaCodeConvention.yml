@@ -18,4 +18,4 @@ jobs:
         run: pip install sqlfluff
 
       - name: Run SQLFluff linter on DataSchema
-        run: sqlfluff lint SoftWareProductDevelopment/3-SoftwareConstruction/3.1-GitHubActions/DataSchema.sql --dialect sqlite || true
+        run: sqlfluff lint DataSchema.sql --dialect sqlite || true

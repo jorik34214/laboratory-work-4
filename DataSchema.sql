@@ -1,0 +1,5 @@
+CREATE TABLE bikes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    model TEXT NOT NULL,
+    price_per_hour REAL NOT NULL
+);
