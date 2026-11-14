@@ -8,4 +8,3 @@ CREATE TABLE bikes(
     model TEXT,
     price REAL
 );
-EOF
