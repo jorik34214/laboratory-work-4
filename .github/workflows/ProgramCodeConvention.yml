@@ -16,4 +16,4 @@ jobs:
 
       - name: Verify C# code style
         run: |
-          dotnet format --verify-no-changes --severity info || true
+          dotnet format Шлях/До/ТвогоПроєкту.csproj --verify-no-changes --severity info || true
